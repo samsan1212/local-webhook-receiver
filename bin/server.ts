@@ -2,13 +2,14 @@ import { serve } from "https://deno.land/std@0.193.0/http/server.ts";
 
 import { logger } from "~/lib/logger.ts";
 import { config } from "~/lib/config.ts";
+import { convertRequestBody } from "~/utils/convert_request_body.ts";
 
 const handler = async (req: Request): Promise<Response> => {
   logger.log(`Request received: ${req.url}`);
 
   if (req.body) {
-    const body = await req.json();
-    logger.log(`Request body: ${JSON.stringify(body)}`);
+    const body = await convertRequestBody(req);
+    logger.log(`Request body:\n\n${JSON.stringify(body, null, 2)}\n`);
   }
 
   return new Response(JSON.stringify({ message: "ok" }), {
