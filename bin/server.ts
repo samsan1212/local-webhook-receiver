@@ -5,11 +5,11 @@ import { config } from "~/lib/config.ts";
 import { convertRequestBody } from "~/utils/convert_request_body.ts";
 
 const handler = async (req: Request): Promise<Response> => {
-  logger.log(`Request received: ${req.url}`);
+  logger.info(`Request received: ${req.url}`);
 
   if (req.body) {
     const body = await convertRequestBody(req);
-    logger.log(`Request body:\n\n${JSON.stringify(body, null, 2)}\n`);
+    logger.info(`Request body:\n\n${JSON.stringify(body, null, 2)}\n`);
   }
 
   return new Response(JSON.stringify({ message: "ok" }), {
@@ -24,6 +24,6 @@ await serve(handler, {
   port: config.PORT,
   hostname: "0.0.0.0",
   onListen: ({ port }) => {
-    logger.log(`Server running on port ${port}`);
+    logger.info(`Server running on port ${port}`);
   },
 });
