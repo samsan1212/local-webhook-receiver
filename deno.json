@@ -3,7 +3,7 @@
     "~/": "./src/"
   },
   "tasks": {
-    "start": "deno run -A ./src/server.ts",
+    "start": "deno run --allow-net --allow-env --allow-read --allow-sys ./src/server.ts",
     "dev": "deno run -A --watch ./src/server.ts"
   }
 }
