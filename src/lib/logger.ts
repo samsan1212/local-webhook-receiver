@@ -1,6 +1,5 @@
 import { pino } from "npm:pino@8";
 import PinoPretty from "npm:pino-pretty@10";
-import * as fs from "node:fs";
 
 import type { PinoPretty as PinoPrettyNs } from "npm:pino-pretty@10";
 
