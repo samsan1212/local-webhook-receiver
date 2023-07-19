@@ -37,6 +37,12 @@ PORT=8080
 
 ## Run with excutable file
 
+compile the server with `deno compile`
+
+```bash
+$ make compile
+```
+
 You can run the server with the excutable file inside `bin` folder.
 
 ```bash
