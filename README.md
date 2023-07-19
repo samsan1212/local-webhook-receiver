@@ -34,3 +34,13 @@ or create a `.env` file with the following content:
 ```bash
 PORT=8080
 ```
+
+## Run with excutable file
+
+You can run the server with the excutable file inside `bin` folder.
+
+```bash
+$ ./bin/server-{os_arch}
+# e.g. For macOS with Apple Silicon
+$ ./bin/server-aarch64_apple_darwin
+```

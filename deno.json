@@ -1,6 +1,6 @@
 {
   "imports": {
-    "~/": "./"
+    "~/": "./src/"
   },
   "tasks": {
     "start": "deno run -A ./bin/server.ts",
