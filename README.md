@@ -1,6 +1,6 @@
 # Local Webhook Receiver
 
-This is a simple web server that receives a POST request and prints the body to the console.
+This is a simple web server that receives requests and prints the body to the console.
 
 ## Pre-requisites
 
