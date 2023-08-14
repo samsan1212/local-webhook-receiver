@@ -7,6 +7,9 @@ import { convertRequestBody } from "~/utils/convert_request_body.ts";
 const handler = async (req: Request): Promise<Response> => {
   logger.info(`Request received: ${req.url}`);
 
+  const headers = Object.fromEntries(req.headers.entries());
+  logger.info(`Request headers:\n\n${JSON.stringify(headers, null, 2)}\n`);
+
   if (req.body) {
     const body = await convertRequestBody(req);
     logger.info(`Request body:\n\n${JSON.stringify(body, null, 2)}\n`);
