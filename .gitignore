@@ -2,3 +2,4 @@
 !.env.example
 deno.lock
 bin
+*.log
