@@ -1,26 +1,12 @@
-import * as yup from "https://cdn.skypack.dev/yup@^1.1?dts";
-import { load } from "https://deno.land/std@0.193.0/dotenv/mod.ts";
-import { fromFileUrl } from "https://deno.land/std@0.193.0/path/mod.ts";
+import "@std/dotenv/load";
+import { z } from "zod";
 
-import type { ValidationError } from "https://cdn.skypack.dev/yup@^1.1?dts";
-
-await load({
-  envPath: fromFileUrl(new URL("../.env", import.meta.url)),
-  export: true,
-  examplePath: null,
+const envSchema = z.object({
+  PORT: z.number().int().default(7777),
 });
 
-const envSchema = yup.object({
-  PORT: yup.number().transform((val: unknown) =>
-    isNaN(val as number) ? undefined : val
-  )
-    .default(
-      7777,
-    ),
-});
-
-export const config = await envSchema.validate({
-  PORT: Deno.env.get("PORT"),
-}).catch((err: ValidationError) => {
+export const config = await envSchema.parseAsync({
+  PORT: Number.parseInt(Deno.env.get("PORT") ?? ""),
+}).catch((err: z.ZodError) => {
   throw new Error(err.message);
 });

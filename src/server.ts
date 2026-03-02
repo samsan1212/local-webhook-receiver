@@ -1,5 +1,3 @@
-import { serve } from "https://deno.land/std@0.193.0/http/server.ts";
-
 import { logger } from "~/lib/logger.ts";
 import { config } from "~/lib/config.ts";
 import { convertRequestBody } from "~/utils/convert_request_body.ts";
@@ -45,10 +43,10 @@ const handler = async (req: Request): Promise<Response> => {
   });
 };
 
-await serve(handler, {
+Deno.serve({
   port: config.PORT,
   hostname: "0.0.0.0",
   onListen: ({ port }) => {
     logger.info(`Server running on port ${port}`);
   },
-});
+}, handler);
